@@ -5,3 +5,20 @@
 rild.libpath=/system/lib/libsec-ril.so
 rild.libargs=-d /dev/ttyS0
 persist.sys.strictmode.visual=0
+
+#
+#F1ROM Tweaks
+#
+
+# Improve overall media quality
+ro.media.enc.jpeg.quality=100
+ro.media.dec.jpeg.memcap=8000000
+ro.media.enc.hprof.vid.bps=8000000
+
+# Increase overall touch responsiveness
+windowsmgr.max_events_per_sec=60
+debug.performance.tuning=1
+video.accelerate.hw=1
+
+#Enable Hardware Acceleration
+debug.sf.hw=1
