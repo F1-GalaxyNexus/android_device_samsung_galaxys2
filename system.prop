@@ -19,6 +19,3 @@ ro.media.enc.hprof.vid.bps=8000000
 windowsmgr.max_events_per_sec=60
 debug.performance.tuning=1
 video.accelerate.hw=1
-
-#Enable Hardware Acceleration
-debug.sf.hw=1
