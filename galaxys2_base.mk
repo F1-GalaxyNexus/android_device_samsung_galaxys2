@@ -63,6 +63,7 @@ PRODUCT_COPY_FILES += \
 
 # Packages
 PRODUCT_PACKAGES := \
+    audio.a2dp.default \
     Camera \
     camera.exynos4 \
     com.android.future.usb.accessory \
@@ -75,6 +76,7 @@ PRODUCT_PACKAGES := \
 # HAL
 PRODUCT_PACKAGES += \
     lights.exynos4 \
+    sensors.exynos4 \
     libhwconverter \
     libs5pjpeg \
     libfimg

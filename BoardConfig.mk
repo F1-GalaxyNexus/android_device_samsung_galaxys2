@@ -71,6 +71,9 @@ TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/galaxys2/releaseto
 BOARD_EGL_CFG := device/samsung/galaxys2/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
+# Enable WEBGL in WebKit
+ENABLE_WEBGL := true
+
 # HWComposer
 BOARD_USES_HWCOMPOSER := true
 BOARD_USE_SECTVOUT := true
@@ -87,9 +90,13 @@ BOARD_USES_MFC_FPS := true
 # Audio
 BOARD_USE_YAMAHAPLAYER := true
 BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
+BOARD_HAS_SAMSUNG_VOLUME_BUG := true
 
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
+
+# Camera
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -132,6 +139,13 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/galaxys2/overlay/include
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_RES := device/samsung/galaxys2/res/charger
+
+# Nearly all shipped I9100 devices have defective eMMC chips (VYL00M fwrev 0x19)
+# Prevent usage of ERASE commands in recovery on these boards.
+# This is redundant for our recovery since the kernel has MMC_CAP_ERASE
+# disabled for mshci.c, and so do nearly all I9100 kernels,
+# but better safe than sorry.
+BOARD_SUPPRESS_EMMC_WIPE := true
 
 # assert
 TARGET_OTA_ASSERT_DEVICE := galaxys2,GT-I9100,GT-I9100M,GT-I9100P,GT-I9100T
